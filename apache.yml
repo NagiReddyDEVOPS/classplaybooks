@@ -1,0 +1,17 @@
+---
+- hosts: db 
+  gather_facts: true
+  tasks:
+    - name: Install Apache if not installed
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Install apache2 if not installed 
+      ansible.builtin.apt:
+        name: apache2
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+

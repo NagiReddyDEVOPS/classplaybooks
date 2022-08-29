@@ -1,0 +1,11 @@
+---
+- hosts: web
+  gather_facts: false
+  tasks:
+    - name: create a directory 
+      ansible.builtin.file: path=/opt/dir_123 state=absent
+
+    - name: Create a file
+      ansible.builtin.file: 
+        path: /opt/hari.txt 
+        state: absent
